@@ -8,7 +8,11 @@ using Java, Spring Boot, and AWS RDS.
 - Java
 - Spring Boot
 - HTML / CSS / JavaScript
-- AWS RDS (MySQL or PostgreSQL)
+- AWS RDS (MySQL)
+
+## Development Environment
+- Backend development was mainly done using IntelliJ IDEA.
+- Frontend implementation and configuration files were handled with Visual Studio Code.
 
 ## Features
 - User login
