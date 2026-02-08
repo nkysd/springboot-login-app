@@ -1,0 +1,11 @@
+/* base.css */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--color-bg-page);
+  color: var(--color-text-main);
+}
