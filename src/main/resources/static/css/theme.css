@@ -1,0 +1,23 @@
+/* theme.css */
+
+:root {
+  --color-bg-page: #f6f7fb;
+  --color-bg-card: #ffffff;
+
+  --color-border: #e8e8ef;
+  --color-border-input: #dcdcea;
+
+  --color-text-main: #111111;
+  --color-text-sub: #666666;
+  --color-text-hint: #777777;
+
+  --color-primary: #111111;
+  --color-primary-hover: #333333;
+  --color-text-on-primary: #ffffff;
+
+  --color-focus: #6b7cff;
+  --color-success: #0a7a2f;
+  --color-error: #c21f1f;
+}
+
+/* Dark Mode */
