@@ -13,6 +13,17 @@ public interface UserMapper
   @Options(useGeneratedKeys = true, keyProperty = "id")
   int insert(User user);
 
-  @Select("SELECT id, username, email, password FROM users WHERE id = #{id}")
+  @Select("""
+        SELECT id, username, email, password
+        FROM users
+        WHERE id = #{id}""")
   User findById(@Param("id") Long id);
+
+  // Find user by email
+  @Select("""
+        SELECT id, username, email, password
+        FROM users
+        WHERE email = #{email}
+        """)
+  User findByEmail(@Param("email") String email);
 }
