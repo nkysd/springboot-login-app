@@ -76,7 +76,8 @@ form.addEventListener("submit", async (e) => {
     }
 
     // ===== Success =====
-    setMessage("Login successful!", "ok");
+    // Success message is not shown because it redirects immediately
+    // setMessage("Login successful!", "ok");
 
     // Move to home page
     window.location.href = "/home.html";
