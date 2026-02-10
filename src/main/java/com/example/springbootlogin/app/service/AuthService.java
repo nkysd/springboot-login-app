@@ -9,25 +9,25 @@ public class AuthService
 {
   private final UserMapper userMapper;
 
-  // inject mapper
+  // Inject mapper
   public AuthService(UserMapper userMapper)
   {
     this.userMapper = userMapper;
   }
 
-  // check login information
+  // Check login information
   public boolean authenticate(String email, String password)
   {
-    // find user by email
+    // Find user by email
     User user = userMapper.findByEmail(email);
 
-    // if user not found
+    // If user not found
     if (user == null)
     {
       return false;
     }
 
-    // compare plain password
+    // Compare plain password
     return password.equals(user.getPassword());
   }
 }

@@ -14,7 +14,7 @@ public class LoginApiController
 {
   private final AuthService authService;
 
-  // inject service
+  // Inject service
   public LoginApiController(AuthService authService)
   {
     this.authService = authService;
@@ -34,7 +34,7 @@ public class LoginApiController
         request.getPassword()
     );
 
-    // login failed
+    // Login failed
     if (!success)
     {
       return ResponseEntity
@@ -42,10 +42,10 @@ public class LoginApiController
           .body(Map.of("message", "Invalid email or password"));
     }
 
-    // save login info in session
+    // Save login info in session
     session.setAttribute("LOGIN_EMAIL", request.getEmail());
 
-    // login success
+    // Login success
     return ResponseEntity.ok(Map.of("message", "ok"));
   }
 }

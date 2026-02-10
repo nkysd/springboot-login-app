@@ -1,57 +1,91 @@
-// get form elements
+// ===== Get HTML elements =====
 const form = document.getElementById("loginForm");
 const message = document.getElementById("message");
 const submitBtn = document.getElementById("submitBtn");
 
-// handle submit event
+// ===== Show message to the user =====
+function setMessage(text, type) {
+  // Set text message
+  messageEl.textContent = text;
+
+  // Remove old styles
+  messageEl.classList.remove("ok", "ng");
+
+  // Add style if type exists (ok or ng)
+  if (type) {
+    messageEl.classList.add(type);
+  }
+}
+
+// ===== Enable / Disable button while loading =====
+function setLoading(isLoading) {
+  submitBtn.disabled = isLoading;
+
+  // Change button text
+  submitBtn.textContent = isLoading
+    ? "Logging in..."
+    : "Login";
+}
+
+// ===== Handle form submit =====
 form.addEventListener("submit", async (e) => {
-  // stop normal form submit
+  // Stop default form submit (page reload)
   e.preventDefault();
 
-  // clear message
+  // Clear old message
   message.textContent = "";
 
-  // disable button
-  submitBtn.disabled = true;
-
-  // get input values
+  // ===== Get input values =====
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
 
-  // create request body
-  const data = {
+  // ===== Data to send to Spring Boot =====
+  const payload = {
     email: email,
     password: password
   };
 
+  // Disable button during request
+  setLoading(true);
+
   try {
-    // call login API
+    // ===== Send POST request =====
     const response = await fetch("/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(payload)
     });
 
-    // parse JSON
-    const result = await response.json().catch(() => ({}));
+    // ===== Read response =====
+    const contentType = response.headers.get("content-type");
+    const responseData = contentType && contentType.includes("application/json")
+      ? await response.json()
+      : await response.text();
 
-    // if success
-    if (response.ok) {
-      message.textContent = "Login success";
+    // ===== Handle error response =====
+    if (!response.ok) {
+      const errorMessage =
+        typeof responseData === "string"
+          ? responseData
+          : (responseData.message || "Login failed.");
 
-      // move to home page (you can change this)
-      window.location.href = "/home.html";
+      setMessage(errorMessage, "ng");
       return;
     }
 
-    // if failed
-    message.textContent = result.message || "Login failed";
+    // ===== Success =====
+    setMessage("Login successful!", "ok");
+
+    // Move to home page
+    window.location.href = "/home.html";
+
   } catch (error) {
-    message.textContent = "Server error";
+    // Network or server error
+    setMessage("Network error. Please try again later.", "ng");
   } finally {
-    // enable button
-    submitBtn.disabled = false;
+    // Enable button again
+    setLoading(false);
   }
 });
