@@ -1,6 +1,6 @@
 // ===== Get HTML elements =====
 const form = document.getElementById("loginForm");
-const message = document.getElementById("message");
+const messageEl = document.getElementById("message");
 const submitBtn = document.getElementById("submitBtn");
 
 // ===== Show message to the user =====
@@ -33,7 +33,7 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   // Clear old message
-  message.textContent = "";
+  setMessage("");
 
   // ===== Get input values =====
   const email = document.getElementById("email").value.trim();
