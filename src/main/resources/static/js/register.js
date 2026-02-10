@@ -69,16 +69,16 @@ form.addEventListener("submit", async (e) => {
 
     // ===== Read response =====
     const contentType = response.headers.get("content-type");
-    const data = contentType && contentType.includes("application/json")
+    const responseData = contentType && contentType.includes("application/json")
       ? await response.json()
       : await response.text();
 
     // ===== Handle error response =====
     if (!response.ok) {
       const errorMessage =
-        typeof data === "string"
-          ? data
-          : (data.message || "Registration failed.");
+        typeof responseData === "string"
+          ? responseData
+          : (responseData.message || "Registration failed.");
 
       setMessage(errorMessage, "ng");
       return;
