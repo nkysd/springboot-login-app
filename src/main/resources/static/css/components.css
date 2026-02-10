@@ -97,3 +97,7 @@
 .message.ng {
   color: var(--color-error);
 }
+
+.sub-link {
+  margin: 0 0 0 0px;
+}

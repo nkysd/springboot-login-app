@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <title>User Register</title>
+  <title>User Login</title>
   <meta name="author" content="nkysd">
   <link rel="stylesheet" href="/css/theme.css">
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/register.css">
+  <link rel="stylesheet" href="/css/login.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -23,13 +23,8 @@
 
   <main class="container">
     <section class="card">
-      <h1 class="title">Create an Account</h1>
-      <form id="registerForm" class="form">
-        <label class="label">
-          Username
-          <input class="input" type="text" name="username" id="username" autocomplete="username" required />
-        </label>
-
+      <h1 class="title">Login</h1>
+      <form id="loginForm" class="form">
         <label class="label">
           Email
           <input class="input" type="email" name="email" id="email" autocomplete="email" required />
@@ -41,26 +36,21 @@
           <small class="hint">more than 8 characters</small>
         </label>
 
-        <label class="label">
-          Confirm Password
-          <input class="input" type="password" name="confirmPassword" id="confirmPassword" autocomplete="new-password" minlength="8" required />
-        </label>
-
-        <button class="button" type="submit" id="submitBtn">Register</button>
+        <button class="button" type="submit" id="submitBtn">Login</button>
 
         <!-- message area -->
         <p id="message" class="message" aria-live="polite"></p>
 
         <!-- link to register page -->
         <p class="sub-link">
-          Already have an account?
-          <a href="/login.html">Login</a>
+          Don't have an account?
+          <a href="/register.html">Create one</a>
         </p>
       </form>
     </section>
   </main>
 
-  <script src="js/register.js"></script>
+  <script src="/js/login.js"></script>
 
   <footer>
   </footer>
