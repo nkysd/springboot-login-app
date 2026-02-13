@@ -1,14 +1,13 @@
 # Growth Log Application (Working Title)
 
-A task and activity tracking web application built with Spring Boot.
+A growth tracking web application built with Spring Boot.
 
-This application is a growth tracking web application built with Spring Boot.
+This application allows users to create daily tasks, mark them as completed,
+and automatically generate timeline logs to visualize their personal progress
+through a structured and relational data design.
 
-Users can create daily tasks, mark them as completed, and automatically
-generate timeline logs to visualize their personal progress.
-
-This project started as a login system and was extended into a
-task and activity tracking application.
+The project originally started as a login system and was later extended
+into a full task and activity tracking application.
 
 ---
 
@@ -31,6 +30,11 @@ task and activity tracking application.
 - Manual note posting
 - Logs grouped by date
 - Optional relation to Todo (nullable foreign key)
+
+### Guest Access
+- Users can explore the application without registration.
+- A temporary guest session is provided for testing features.
+- Guest data is session-based and not persisted in the database.
 
 ---
 
@@ -64,13 +68,13 @@ task and activity tracking application.
 ## Deployment Strategy
 
 ### Development Environment
-- Local MySQL
-- Backend: IntelliJ IDEA
+- Backend & Frontend: IntelliJ IDEA
 - Database Management: DBeaver
+- Version Control: Git / GitHub
 
 ### Production Deployment (Portfolio Setup)
 - EC2 instance hosting Spring Boot application
-- MySQL running on EC2 for cost-efficient deployment
+- MySQL installed on EC2 for cost-efficient deployment
 
 ### Production Architecture (Scalable Design)
 In a real production environment, the recommended architecture would be:
@@ -89,7 +93,8 @@ RDS is not currently used to minimize cloud costs during development.
 - Streak tracking feature
 - Public shareable timeline
 - AWS EC2 deployment automation
-- Flyway database migration
+- REST API documentation (Swagger)
+
 
 ---
 
@@ -103,3 +108,21 @@ This project demonstrates:
 - Transaction handling
 - Deployment strategy planning
 - Full-stack integration
+
+---
+
+## Architecture
+
+Controller → Service → Mapper → Database
+
+The application follows a layered architecture:
+
+- Controller: Handles HTTP requests and responses.
+- Service: Contains business logic and transaction management.
+- Mapper: Communicates with the database using MyBatis.
+- Database: Stores relational data with foreign key constraints.
+
+The Service layer ensures atomic operations,
+such as updating a Todo and creating a corresponding Log entry.
+
+Transactions are used to guarantee consistency between Todo updates and Log creation.
