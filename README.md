@@ -53,7 +53,7 @@ into a full task and activity tracking application.
 
 ### ER Diagram
 
-![ER Diagram](docs/er-diagram.png)
+![ER Diagram](docs/er/er-diagram.png)
 
 ### Design Decisions
 
