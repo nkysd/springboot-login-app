@@ -1,4 +1,4 @@
-# Growth Log Application (Working Title)
+# Growth Log Application
 
 A growth tracking web application built with Spring Boot.
 
